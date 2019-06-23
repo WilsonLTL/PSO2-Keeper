@@ -4,6 +4,9 @@ The totally renew of PSO2-Keeper, it will be huge size than the origin one.
 <p align="center">
   <img src="https://i.imgur.com/Gsf9GU4.png">
 </p>
+<p align="center">
+  <img src="https://i.imgur.com/RqnWW1c.png">
+</p>
 
 ## Tech Using
 ```

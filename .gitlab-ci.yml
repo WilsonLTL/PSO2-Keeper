@@ -18,7 +18,7 @@ docker-test:
   stage: test
   script:
     - cd code
-    - docker login registry.gitlab.com -u wilsonlo1997@gmail.com -p e63LVHtsjTz5CzcSj6Yi
+    - docker login registry.gitlab.com -u {username} -p {access_token}
     - docker build -t registry.gitlab.com/wilsonltl/pso2-keeper-renew .
     - docker run -d -p 80:3000 registry.gitlab.com/wilsonltl/pso2-keeper-renew
 
@@ -29,7 +29,7 @@ docker-deploy:
   stage: deploy
   script:
     - cd code
-    - docker login registry.gitlab.com -u wilsonlo1997@gmail.com -p e63LVHtsjTz5CzcSj6Yi
+    - docker login registry.gitlab.com -u {username} -p {access_token}
     - docker build -t registry.gitlab.com/wilsonltl/pso2-keeper-renew .
     - docker push registry.gitlab.com/wilsonltl/pso2-keeper-renew
   only:

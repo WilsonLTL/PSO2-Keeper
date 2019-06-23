@@ -1,0 +1,11 @@
+stages:
+  - build
+
+buildtest-node:
+  image: node:latest
+  stage: build
+  script:
+    - apt-get update -qy
+    - cd code
+    - npm install
+

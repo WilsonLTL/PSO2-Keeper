@@ -1,5 +1,5 @@
 FROM node:latest
-COPY ./code /code
+COPY . /code
 WORKDIR /code
 RUN npm install
 EXPOSE 3000

@@ -1,5 +1,7 @@
 stages:
   - build
+  - test
+  - deploy
 
 buildtest-node:
   image: node:latest
@@ -8,4 +10,29 @@ buildtest-node:
     - apt-get update -qy
     - cd code
     - npm install
+
+docker-test:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: test
+  script:
+    - docker login registry.gitlab.com -u wilsonlo1997@gmail.com -p e63LVHtsjTz5CzcSj6Yi
+    - docker build -t registry.gitlab.com/wilsonltl/pso2-keeper-renew .
+    - docker run -d -p 80:3000 registry.gitlab.com/wilsonltl/pso2-keeper-renew
+
+docker-deploy:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: deploy
+  script:
+    - docker login registry.gitlab.com -u wilsonlo1997@gmail.com -p e63LVHtsjTz5CzcSj6Yi
+    - docker build -t registry.gitlab.com/wilsonltl/pso2-keeper-renew .
+    - docker push registry.gitlab.com/wilsonltl/pso2-keeper-renew
+  only:
+      - master
+
+
+
 

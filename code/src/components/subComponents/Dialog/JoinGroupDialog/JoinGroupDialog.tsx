@@ -44,7 +44,7 @@ export default function ResponsiveDialog(props) {
         key={props.title}
         fullScreen={false}
         open={props.status}
-        onClose={props.close}
+        onClose={() => props.close("Join-group")}
         disableBackdropClick={true}
         aria-labelledby="responsive-dialog-title"
       >
@@ -61,7 +61,7 @@ export default function ResponsiveDialog(props) {
             </DialogContentText>
           </DialogContent>
         <DialogActions>
-          <Button name="create-dialog-cancel" variant={"outlined"} onClick={props.close}>
+          <Button name="create-dialog-cancel" variant={"outlined"} onClick={() => props.close("Join-group")}>
             Cancel
           </Button>
           <Button style={Styles.button} variant="contained" color="primary" autoFocus={true} onClick={props.submit}>

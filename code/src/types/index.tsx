@@ -22,6 +22,7 @@ export interface IUserPanelState {
     SnackBar: any,
     EditDialog: any,
     CreateDialog: any,
-    JoinDialog: any
+    JoinDialog: any,
+    GroupInfoDialog: any,
   }
 }

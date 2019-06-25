@@ -71,7 +71,7 @@ export default function ResponsiveDialog(props) {
         key={props.title}
         fullScreen={false}
         open={props.status}
-        onClose={props.close}
+        onClose={() => props.close("Edit-profile")}
         disableBackdropClick={true}
         aria-labelledby="responsive-dialog-title"
       >
@@ -136,7 +136,7 @@ export default function ResponsiveDialog(props) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button name="edit-cancel" variant={"outlined"} autoFocus={true} onClick={props.close}>
+          <Button name="edit-cancel" variant={"outlined"} autoFocus={true} onClick={() => props.close("Edit-profile")}>
             Cancel
             </Button>
           <Button name="edit-submit" style={Styles.button} variant="contained" color="primary" autoFocus={true} onClick={props.submit}>

@@ -65,7 +65,7 @@ export default function ResponsiveMemberCard(props) {
                     title="Your Profile" />
                 <Divider />
                 <CardContent>
-                    <Fab id="edit-card" name="edit-card" color="secondary" size={"small"} aria-label="Edit" style={Styles.submit_button} onClick={click}>
+                    <Fab id="edit-card" name="edit-card" color="secondary" size={"small"} aria-label="Edit" style={Styles.submit_button} onClick={() => click("Edit-profile")}>
                         <Icon id="edit-card">edit_icon</Icon>
                     </Fab>
                     <div style={Styles.memberCard}>

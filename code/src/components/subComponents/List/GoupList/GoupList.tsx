@@ -54,7 +54,7 @@ export default function ResponsiveGroupList(props) {
                             <Divider />
                         </div>
                     ))}
-                    <ListItem key={"new_item"} button={true} alignItems="flex-start" onClick={join}>
+                    <ListItem key={"new_item"} button={true} alignItems="flex-start" onClick={() =>join("Join-group")}>
                         <ListItemAvatar>
                             <Avatar alt="Remy Sharp" src="/images/icon/matoi_icon.jpg" />
                         </ListItemAvatar>

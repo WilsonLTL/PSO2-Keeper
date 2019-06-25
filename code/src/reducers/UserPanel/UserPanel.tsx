@@ -1,6 +1,9 @@
 import { ModifyAction } from '../../actions/UserPanel';
 // import { IUserPanelState } from '../../types'
-import { HANDLECHANGETEXT, HANDLESNACKBAROPEN, HANDLESNACKBARCLOSE, HANDLEEDITCLICK, HANDLEEDITCLOSE, HANDLECREATECLICK, HANDLECREATECLOSE, HANDLEEDITSUBMIT, HANDLECREATESUBMIT, HANDLEJOINCLICK, HANDLEJOINCLOSE, HANDLEJOINSUBMIT } from '../../constants/UserPanel';
+import {
+    HANDLECHANGETEXT, HANDLESNACKBAROPEN, HANDLESNACKBARCLOSE, HANDLECLICK, HANDLECLOSE,
+    HANDLEEDITSUBMIT, HANDLECREATESUBMIT, HANDLEJOINSUBMIT
+} from '../../constants/UserPanel';
 
 const defaultValue = {
     User: {
@@ -17,8 +20,64 @@ const defaultValue = {
             avatar: "https://scontent.fhkg4-2.fna.fbcdn.net/v/t1.0-9/18157862_1175327462576972_6446174160084094492_n.jpg?_nc_cat=104&_nc_ht=scontent.fhkg4-2.fna&oh=a28bb65b5b72b1d9c46c0770d9adf0a4&oe=5D940F34",
             groupName: '康娜的日常',
             permission: 'Administrator',
-            member: [],
-            mission: [],
+            member: [
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.1999678.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.2014111.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.2106255.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.2038176.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.1980899.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.2007448.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.1986761.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.2040341.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.2031898.jpg",
+                    permission: "Administrator"
+                }
+            ],
+            mission: {
+                custom_mission: [],
+                template_mission: [
+                    {
+                        avatar: "https://pbs.twimg.com/media/D431dlTUEAAiAxb.jpg",
+                        backImage: "https://pbs.twimg.com/media/DqwbhkeU0AAQwEz.jpg",
+                        missionName: "終の艦隊迎撃戦",
+                        quota: 16
+                    }
+                ]
+            },
             status: true
         },
         {
@@ -27,7 +86,10 @@ const defaultValue = {
             groupName: '鄰人團 - 我的朋友很少',
             permission: 'User',
             member: [],
-            mission: [],
+            mission: {
+                custom_mission: [],
+                template_mission: []
+            },
             status: false
         },
         {
@@ -36,7 +98,10 @@ const defaultValue = {
             groupName: 'GENESIS - 休閒時裝',
             permission: 'User',
             member: [],
-            mission: [],
+            mission: {
+                custom_mission: [],
+                template_mission: []
+            },
             status: false
         },
         {
@@ -45,7 +110,10 @@ const defaultValue = {
             groupName: '只有Loner知道的世界 - 拼分團',
             permission: 'Administrator',
             member: [],
-            mission: [],
+            mission: {
+                custom_mission: [],
+                template_mission: []
+            },
             status: false
         },
     ],
@@ -79,7 +147,7 @@ const defaultValue = {
     EditDialog: {
         status: false
     },
-    CreateDialog:{
+    CreateDialog: {
         status: false,
         avatar: "/images/icon/arks_logo2.png",
         backImage: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6f295f94-b7e0-4e0f-abd7-a0c58edfe653/d7vb2jx-5d5e97ed-257f-4b78-9b50-dbf7f9cbebcd.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzZmMjk1Zjk0LWI3ZTAtNGUwZi1hYmQ3LWEwYzU4ZWRmZTY1M1wvZDd2YjJqeC01ZDVlOTdlZC0yNTdmLTRiNzgtOWI1MC1kYmY3ZjljYmViY2QucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.4CLHjL1pORPDmxblz9-C1UlPcF0RcCpS_Fy7z1oVW1E",
@@ -88,6 +156,81 @@ const defaultValue = {
     JoinDialog: {
         status: false,
         access_token: ""
+    },
+    GroupInfoDialog: {
+        status: false,
+        targetGroup: {
+            img: "http://img.soogif.com/nF7fr7X0ny8hiYeCZdRmqS848j4WXE4V.gif_jpg",
+            avatar: "https://scontent.fhkg4-2.fna.fbcdn.net/v/t1.0-9/18157862_1175327462576972_6446174160084094492_n.jpg?_nc_cat=104&_nc_ht=scontent.fhkg4-2.fna&oh=a28bb65b5b72b1d9c46c0770d9adf0a4&oe=5D940F34",
+            groupName: '康娜的日常',
+            permission: 'Administrator',
+            member: [
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.1999678.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.2014111.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.2106255.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.2038176.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.1980899.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.2007448.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.1986761.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.2040341.jpg",
+                    permission: "Administrator"
+                },
+                {
+                    username: "Username",
+                    avatar: "https://s3.zerochan.net/Matoi.%28PSO2%29.240.2031898.jpg",
+                    permission: "Administrator"
+                }
+            ],
+            mission: {
+                custom_mission: [
+                    {
+                        avatar: "https://pbs.twimg.com/media/D431dlTUEAAiAxb.jpg",
+                        backImage: "https://pbs.twimg.com/media/DqwbhkeU0AAQwEz.jpg",
+                        missionName: "終の艦隊迎撃戦",
+                        quota: 16
+                    }
+                ],
+                template_mission: [
+                    {
+                        avatar: "https://pbs.twimg.com/media/D431dlTUEAAiAxb.jpg",
+                        backImage: "https://pbs.twimg.com/media/DqwbhkeU0AAQwEz.jpg",
+                        missionName: "終の艦隊迎撃戦",
+                        quota: 16
+                    }
+                ]
+            },
+            status: true
+        }
     }
 }
 
@@ -110,7 +253,8 @@ export default (state = defaultValue, action: ModifyAction): any => {
                         DashData: state.DashData,
                         EditDialog: state.EditDialog,
                         CreateDialog: state.CreateDialog,
-                        JoinDialog: state.JoinDialog
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: state.GroupInfoDialog
                     }
                 case "edit-username":
                     return {
@@ -127,7 +271,8 @@ export default (state = defaultValue, action: ModifyAction): any => {
                         DashData: state.DashData,
                         EditDialog: state.EditDialog,
                         CreateDialog: state.CreateDialog,
-                        JoinDialog: state.JoinDialog
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: state.GroupInfoDialog
                     }
                 case "edit-email":
                     return {
@@ -144,7 +289,8 @@ export default (state = defaultValue, action: ModifyAction): any => {
                         DashData: state.DashData,
                         EditDialog: state.EditDialog,
                         CreateDialog: state.CreateDialog,
-                        JoinDialog: state.JoinDialog
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: state.GroupInfoDialog
                     }
                 case "edit-password":
                     return {
@@ -161,8 +307,9 @@ export default (state = defaultValue, action: ModifyAction): any => {
                         DashData: state.DashData,
                         EditDialog: state.EditDialog,
                         CreateDialog: state.CreateDialog,
-                        JoinDialog: state.JoinDialog
-                    }  
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: state.GroupInfoDialog
+                    }
                 case "new-group-avatar":
                     return {
                         User: state.User,
@@ -176,7 +323,8 @@ export default (state = defaultValue, action: ModifyAction): any => {
                             backImage: state.CreateDialog.backImage,
                             groupName: state.CreateDialog.groupName,
                         },
-                        JoinDialog: state.JoinDialog
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: state.GroupInfoDialog
                     }
                 case "new-group-backImage":
                     return {
@@ -191,7 +339,8 @@ export default (state = defaultValue, action: ModifyAction): any => {
                             backImage: action.payload.target.value,
                             groupName: state.CreateDialog.groupName,
                         },
-                        JoinDialog: state.JoinDialog
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: state.GroupInfoDialog
                     }
                 case "new-group-username":
                     return {
@@ -206,8 +355,9 @@ export default (state = defaultValue, action: ModifyAction): any => {
                             backImage: state.CreateDialog.backImage,
                             groupName: action.payload.target.value,
                         },
-                        JoinDialog: state.JoinDialog
-                    }   
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: state.GroupInfoDialog
+                    }
                 case "new-group-access-token":
                     return {
                         User: state.User,
@@ -219,8 +369,9 @@ export default (state = defaultValue, action: ModifyAction): any => {
                         JoinDialog: {
                             status: true,
                             access_token: action.payload.target.value
-                        }
-                    }      
+                        },
+                        GroupInfoDialog: state.GroupInfoDialog
+                    }
             }
         case HANDLESNACKBAROPEN:
             return {
@@ -234,7 +385,8 @@ export default (state = defaultValue, action: ModifyAction): any => {
                 DashData: state.DashData,
                 EditDialog: state.EditDialog,
                 CreateDialog: state.CreateDialog,
-                JoinDialog: state.JoinDialog
+                JoinDialog: state.JoinDialog,
+                GroupInfoDialog: state.GroupInfoDialog
             }
         case HANDLESNACKBARCLOSE:
             return {
@@ -248,88 +400,129 @@ export default (state = defaultValue, action: ModifyAction): any => {
                 DashData: state.DashData,
                 EditDialog: state.EditDialog,
                 CreateDialog: state.CreateDialog,
-                JoinDialog: state.JoinDialog
+                JoinDialog: state.JoinDialog,
+                GroupInfoDialog: state.GroupInfoDialog
             }
-        case HANDLEEDITCLICK:
-            return {
-                User: state.User,
-                Groups: state.Groups,
-                SnackBar: state.SnackBar,
-                DashData: state.DashData,
-                EditDialog: {
-                    status: true
-                },
-                CreateDialog: state.CreateDialog,
-                JoinDialog: state.JoinDialog
+        case HANDLECLICK:
+            switch (action.payload) {
+                case "Edit-profile":
+                    return {
+                        User: state.User,
+                        Groups: state.Groups,
+                        SnackBar: state.SnackBar,
+                        DashData: state.DashData,
+                        EditDialog: {
+                            status: true
+                        },
+                        CreateDialog: state.CreateDialog,
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: state.GroupInfoDialog
+                    }
+                case "Create-group":
+                    return {
+                        User: defaultValue.User,
+                        Groups: state.Groups,
+                        SnackBar: state.SnackBar,
+                        DashData: state.DashData,
+                        EditDialog: state.EditDialog,
+                        CreateDialog: {
+                            status: true,
+                            avatar: state.CreateDialog.avatar,
+                            backImage: state.CreateDialog.backImage,
+                            groupName: state.CreateDialog.groupName,
+                        },
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: state.GroupInfoDialog
+                    }
+                case "Join-group":
+                    return {
+                        User: defaultValue.User,
+                        Groups: state.Groups,
+                        SnackBar: state.SnackBar,
+                        DashData: state.DashData,
+                        EditDialog: state.EditDialog,
+                        CreateDialog: state.CreateDialog,
+                        JoinDialog: {
+                            status: true,
+                            access_token: state.JoinDialog.access_token
+                        },
+                        GroupInfoDialog: state.GroupInfoDialog
+                    }
+                case "Click-group-info":
+                    return {
+                        User: defaultValue.User,
+                        Groups: state.Groups,
+                        SnackBar: state.SnackBar,
+                        DashData: state.DashData,
+                        EditDialog: state.EditDialog,
+                        CreateDialog: state.CreateDialog,
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: {
+                            status: true,
+                            targetGroup: defaultValue.Groups.filter(item => item.groupName.includes(action.groupName))[0]
+                        }
+                    }
             }
-        case HANDLEEDITCLOSE:
-            return {
-                User: defaultValue.User,
-                Groups: state.Groups,
-                SnackBar: state.SnackBar,
-                DashData: state.DashData,
-                EditDialog: {
-                    status: false
-                },
-                CreateDialog: state.CreateDialog,
-                JoinDialog: state.JoinDialog
+        case HANDLECLOSE:
+            switch (action.payload) {
+                case "Edit-profile":
+                    return {
+                        User: defaultValue.User,
+                        Groups: state.Groups,
+                        SnackBar: state.SnackBar,
+                        DashData: state.DashData,
+                        EditDialog: {
+                            status: false
+                        },
+                        CreateDialog: state.CreateDialog,
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: state.GroupInfoDialog
+                    }
+                case "Create-group":
+                    return {
+                        User: defaultValue.User,
+                        Groups: state.Groups,
+                        SnackBar: state.SnackBar,
+                        DashData: state.DashData,
+                        EditDialog: state.EditDialog,
+                        CreateDialog: {
+                            status: false,
+                            avatar: state.CreateDialog.avatar,
+                            backImage: state.CreateDialog.backImage,
+                            groupName: state.CreateDialog.groupName,
+                        },
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: state.GroupInfoDialog
+                    }
+                case "Join-group":
+                    return {
+                        User: defaultValue.User,
+                        Groups: state.Groups,
+                        SnackBar: state.SnackBar,
+                        DashData: state.DashData,
+                        EditDialog: state.EditDialog,
+                        CreateDialog: state.CreateDialog,
+                        JoinDialog: {
+                            status: false,
+                            access_token: state.JoinDialog.access_token
+                        },
+                        GroupInfoDialog: state.GroupInfoDialog
+                    }
+                case "Click-group-info":
+                    return {
+                        User: defaultValue.User,
+                        Groups: state.Groups,
+                        SnackBar: state.SnackBar,
+                        DashData: state.DashData,
+                        EditDialog: state.EditDialog,
+                        CreateDialog: state.CreateDialog,
+                        JoinDialog: state.JoinDialog,
+                        GroupInfoDialog: {
+                            status: false,
+                            targetGroup: state.GroupInfoDialog.targetGroup
+                        }
+                    }
             }
-        case HANDLECREATECLICK: 
-            return {
-                User: defaultValue.User,
-                Groups: state.Groups,
-                SnackBar: state.SnackBar,
-                DashData: state.DashData,
-                EditDialog: state.EditDialog,
-                CreateDialog: {
-                    status: true,
-                    avatar: state.CreateDialog.avatar,
-                    backImage: state.CreateDialog.backImage,
-                    groupName: state.CreateDialog.groupName,
-                },
-                JoinDialog: state.JoinDialog
-            }
-        case HANDLECREATECLOSE:
-            return {
-                User: defaultValue.User,
-                Groups: state.Groups,
-                SnackBar: state.SnackBar,
-                DashData: state.DashData,
-                EditDialog: state.EditDialog,
-                CreateDialog: {
-                    status: false,
-                    avatar: state.CreateDialog.avatar,
-                    backImage: state.CreateDialog.backImage,
-                    groupName: state.CreateDialog.groupName,
-                },
-                JoinDialog: state.JoinDialog
-            }
-        case HANDLEJOINCLICK:
-            return {
-                User: defaultValue.User,
-                Groups: state.Groups,
-                SnackBar: state.SnackBar,
-                DashData: state.DashData,
-                EditDialog: state.EditDialog,
-                CreateDialog: state.CreateDialog,
-                JoinDialog: {
-                    status: true,
-                    access_token: state.JoinDialog.access_token
-                }
-            }
-        case HANDLEJOINCLOSE:
-            return {
-                User: defaultValue.User,
-                Groups: state.Groups,
-                SnackBar: state.SnackBar,
-                DashData: state.DashData,
-                EditDialog: state.EditDialog,
-                CreateDialog: state.CreateDialog,
-                JoinDialog: {
-                    status: false,
-                    access_token: state.JoinDialog.access_token
-                }
-            }    
         case HANDLEEDITSUBMIT:
             return {
                 User: state.User,
@@ -344,7 +537,8 @@ export default (state = defaultValue, action: ModifyAction): any => {
                     status: false
                 },
                 CreateDialog: state.CreateDialog,
-                JoinDialog: state.JoinDialog
+                JoinDialog: state.JoinDialog,
+                GroupInfoDialog: state.GroupInfoDialog
             }
         case HANDLECREATESUBMIT:
             return {
@@ -363,7 +557,8 @@ export default (state = defaultValue, action: ModifyAction): any => {
                     backImage: state.CreateDialog.backImage,
                     groupName: state.CreateDialog.groupName,
                 },
-                JoinDialog: state.JoinDialog
+                JoinDialog: state.JoinDialog,
+                GroupInfoDialog: state.GroupInfoDialog
             }
         case HANDLEJOINSUBMIT:
             return {
@@ -380,8 +575,9 @@ export default (state = defaultValue, action: ModifyAction): any => {
                 JoinDialog: {
                     status: false,
                     access_token: state.JoinDialog.access_token
-                }
-            }    
+                },
+                GroupInfoDialog: state.GroupInfoDialog
+            }
         default:
             return state
     }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import { Avatar, Card, CardContent, CardHeader, Divider, Fab, GridList, GridListTile, GridListTileBar, Typography } from '@material-ui/core';
+import { Avatar, Card, CardContent, CardHeader, Divider, Fab, GridList, GridListTile, GridListTileBar, Typography, Button } from '@material-ui/core';
+import GroupInfoDialog from '../../Dialog/GroupInfoDialog';
 import Icon from '@material-ui/core/Icon';
 export default function ResponsiveGroupCardList(props) {
 
@@ -11,6 +12,10 @@ export default function ResponsiveGroupCardList(props) {
         submit_button: {
             margin: "10px",
             backgroundColor: '#3C5A99'
+        },
+        start_button: {
+            width: "100%",
+            borderRadius: "30px"
         },
         groupCardListIcon: {
             width: "80px",
@@ -27,7 +32,6 @@ export default function ResponsiveGroupCardList(props) {
             textAlign: "center" as "center"
         },
     }
-
 
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
@@ -57,24 +61,27 @@ export default function ResponsiveGroupCardList(props) {
                                 title="Your Group" />
                 <Divider />
                 <CardContent>
-                    <Fab id="create-group" color="secondary" size={"small"} aria-label="Edit" style={Styles.submit_button} onClick={props.click}>
+                    <Fab id="create-group" color="secondary" size={"small"} aria-label="Edit" style={Styles.submit_button} onClick={() => props.click("Create-group")}>
                         <Icon id="create-group">add</Icon>
                     </Fab>
                     <GridList className={classes.gridList} cols={4} cellHeight={220} >
-                        {tileData.map(tile => (
-                            <GridListTile key={tile.img}>
-                                <img style={{borderRadius: "30px",maxHeight: "220px"}} src={tile.img} alt={tile.groupName} />
+                        {tileData.map(item => (
+                            <GridListTile key={item.img} >
+                                <img style={{borderRadius: "30px",maxHeight: "220px"}} src={item.img} alt={item.groupName} />
                                 <GridListTileBar classes={{title: classes.title,}} title={
-                                    <Avatar style={Styles.groupCardListIcon} alt="Remy Sharp" src={tile.avatar} />
+                                    <Avatar style={Styles.groupCardListIcon} alt="Remy Sharp" src={item.avatar} />
                                 } 
                                 subtitle={
                                     <React.Fragment>
                                         <Typography component="div" variant="subtitle1" style={Styles.inline} >
-                                            {"Group Name: "+ tile.groupName}
+                                            {"Group Name: "+ item.groupName}
                                         </Typography>
                                         <Typography component="div" variant="subtitle1" style={Styles.inline} >
-                                            {"Permission: "+ tile.permission}
+                                            {"Permission: "+ item.permission}
                                         </Typography>
+                                        <div>
+                                            <Button name={item.groupName} style={Styles.start_button} variant="contained" color="primary" onClick={() => props.clickListItem("Click-group-info",item.groupName)}>More</Button>
+                                        </div>
                                     </React.Fragment>
                                 } 
                                 style={Styles.gridListTileBar}
@@ -84,6 +91,7 @@ export default function ResponsiveGroupCardList(props) {
                     </GridList>
                 </CardContent>
             </Card>
+            <GroupInfoDialog status={props.groupInfo.status} close={props.closeListItem} groupInfo={props.groupInfo.targetGroup}/>
         </div>
     );
 }

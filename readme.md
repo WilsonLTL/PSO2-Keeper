@@ -13,7 +13,7 @@ The totally renew of PSO2-Keeper, it will be huge size than the origin one.
 1. Design: Adobe XD
 2. Front-end: react + redux + jest + enzyme + Docker + webpack + Typescript
 3. Backend: expressJS / KOA + Typescript + GraphQL + Docker
-4. CI/CD: gitlab CI + Jenkins
+4. CI/CD: Gitlab CI + Jenkins
 5. Cloud: Amazon EC2 + Amazon LoadBalance + Amazon cloudfront + Amazon Router 53
 PS: Which also is a Full-Stack challenge to myself
 ```

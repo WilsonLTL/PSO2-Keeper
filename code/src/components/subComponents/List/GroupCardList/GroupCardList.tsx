@@ -24,6 +24,7 @@ export default function ResponsiveGroupCardList(props) {
         },
         inline: {
             display: 'grid',
+            textAlign: "center" as "center"
         },
     }
 
@@ -68,17 +69,11 @@ export default function ResponsiveGroupCardList(props) {
                                 } 
                                 subtitle={
                                     <React.Fragment>
-                                        <Typography component="span" variant="overline" style={Styles.inline} >
-                                            {"Group Name"}
+                                        <Typography component="div" variant="subtitle1" style={Styles.inline} >
+                                            {"Group Name: "+ tile.groupName}
                                         </Typography>
-                                        <Typography component="span" variant="subtitle2" style={Styles.inline} >
-                                            {tile.groupName}
-                                        </Typography>
-                                        <Typography component="span" variant="overline" style={Styles.inline} >
-                                            {"Permission"}
-                                        </Typography>
-                                        <Typography component="span" variant="subtitle2" style={Styles.inline} >
-                                            {tile.permission}
+                                        <Typography component="div" variant="subtitle1" style={Styles.inline} >
+                                            {"Permission: "+ tile.permission}
                                         </Typography>
                                     </React.Fragment>
                                 } 

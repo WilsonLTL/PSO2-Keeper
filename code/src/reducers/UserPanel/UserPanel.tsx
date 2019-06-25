@@ -17,6 +17,8 @@ const defaultValue = {
             avatar: "https://scontent.fhkg4-2.fna.fbcdn.net/v/t1.0-9/18157862_1175327462576972_6446174160084094492_n.jpg?_nc_cat=104&_nc_ht=scontent.fhkg4-2.fna&oh=a28bb65b5b72b1d9c46c0770d9adf0a4&oe=5D940F34",
             groupName: '康娜的日常',
             permission: 'Administrator',
+            member: [],
+            mission: [],
             status: true
         },
         {
@@ -24,6 +26,8 @@ const defaultValue = {
             avatar: "http://www.acgrenwu.com/uploads/allimg/171201/1-1G201235R3K8.jpg",
             groupName: '鄰人團 - 我的朋友很少',
             permission: 'User',
+            member: [],
+            mission: [],
             status: false
         },
         {
@@ -31,6 +35,8 @@ const defaultValue = {
             avatar: "https://www.nippon.com/en/ncommon/contents/japan-topics/86562/86562.jpg",
             groupName: 'GENESIS - 休閒時裝',
             permission: 'User',
+            member: [],
+            mission: [],
             status: false
         },
         {
@@ -38,6 +44,8 @@ const defaultValue = {
             avatar: "http://1.bp.blogspot.com/-dVsrlGG0-L8/Uu58UF_S-lI/AAAAAAAAB-Y/NE7zGxXrWTA/s1600/comic.jpg",
             groupName: '只有Loner知道的世界 - 拼分團',
             permission: 'Administrator',
+            member: [],
+            mission: [],
             status: false
         },
     ],
@@ -78,7 +86,7 @@ const defaultValue = {
         groupName: "New Group",
     },
     JoinDialog: {
-        status: true,
+        status: false,
         access_token: ""
     }
 }

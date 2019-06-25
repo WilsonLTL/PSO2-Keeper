@@ -8,6 +8,7 @@ import MessageSnackBar from '../../subComponents/Dialog/MessageSnackBar';
 import EditCardDialog from '../../subComponents/Dialog/EditCardDialog';
 import CreateGroupDialog from '../../subComponents/Dialog/CreateGroupDialog';
 import JoinGroupDialog from '../../subComponents/Dialog/JoinGroupDialog';
+import GroupInfoDialog from '../../subComponents/Dialog/GroupInfoDialog';
 import { Grid } from '@material-ui/core';
 
 // create infterface
@@ -71,6 +72,7 @@ class UserPanel extends React.PureComponent<IProps> {
                 <EditCardDialog status={EditDialog.status} title={"Edit Profile"} close={onHandleEditClose} user={User} handleChange={onHandleChangeText} submit={onHandleSubmitEdit}/>
                 <CreateGroupDialog status={CreateDialog.status} newGroup={CreateDialog} title={"Create New Group"} close={onHandleCreateClose} handleChange={onHandleChangeText} submit={onHandleSubmitCreate}/>
                 <JoinGroupDialog status={JoinDialog.status} access_token={JoinDialog.access_token} title={"Join New Group"} close={onHandleJoinClose} handleChange={onHandleChangeText} submit={onHandleSubmitJoin}/>
+                <GroupInfoDialog status={true}/>
             </div>
         );
     }

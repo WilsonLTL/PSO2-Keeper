@@ -13,6 +13,8 @@ export default function ResponsiveGroupList(props) {
         }
     }
 
+    console.log(props)
+
     const tileData = props.tileData
 
     const click = props.click
@@ -26,7 +28,7 @@ export default function ResponsiveGroupList(props) {
 
                     {tileData.map(tile => (
                         <div key={tile.groupName}>
-                            <ListItem button={true} alignItems="flex-start" onClick={tile.status ? undefined : click }>
+                            <ListItem button={true} alignItems="flex-start" onClick={tile.status ? () => props.submit("Group-form") : click }>
                                 <ListItemAvatar >
                                     <div>
                                         {
@@ -54,23 +56,25 @@ export default function ResponsiveGroupList(props) {
                             <Divider />
                         </div>
                     ))}
-                    <ListItem key={"new_item"} button={true} alignItems="flex-start" onClick={() =>join("Join-group")}>
-                        <ListItemAvatar>
-                            <Avatar alt="Remy Sharp" src="/images/icon/matoi_icon.jpg" />
-                        </ListItemAvatar>
-                        <ListItemText
-                            secondary={
-                                <React.Fragment>
-                                    <Typography component="span" variant="overline" style={Styles.inline} color="textSecondary" >
-                                        {"Click to join new group"}
-                                    </Typography>
-                                    <Typography component="span" variant="body2" style={Styles.inline} color="textPrimary" >
-                                        {"Click to join new group"}
-                                    </Typography>
-                                </React.Fragment>
-                            }
-                        />
-                    </ListItem>
+                    { props.type === "User-panel" &&
+                        <ListItem key={"new_item"} button={true} alignItems="flex-start" onClick={() =>join("Join-group")}>
+                            <ListItemAvatar>
+                                <Avatar alt="Remy Sharp" src="/images/icon/matoi_icon.jpg" />
+                            </ListItemAvatar>
+                            <ListItemText
+                                secondary={
+                                    <React.Fragment>
+                                        <Typography component="span" variant="overline" style={Styles.inline} color="textSecondary" >
+                                            {"Click to join new group"}
+                                        </Typography>
+                                        <Typography component="span" variant="body2" style={Styles.inline} color="textPrimary" >
+                                            {"Click to join new group"}
+                                        </Typography>
+                                    </React.Fragment>
+                                }
+                            />
+                        </ListItem>
+                    }
                 </List>
             </Card>
         </div>

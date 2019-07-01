@@ -1,12 +1,12 @@
-import { HANDLELOAD, HANDLECHANGEPERMISSION, HANDLECHANGETEXT, HANDLESNACKBAROPEN, HANDLESNACKBARCLOSE, HANDLECLICK, HANDLECLOSE, HANDLESUBMIT } from 'src/constants/UserPanel';
+import { HANDLELOAD, HANDLECHANGESTATUS, HANDLECHANGETEXT, HANDLESNACKBAROPEN, HANDLESNACKBARCLOSE, HANDLECLICK, HANDLECLOSE, HANDLESUBMIT } from 'src/constants/FormGroupPanel';
 
 export interface IHANDLELOADAction {
     type: HANDLELOAD,
     payload: JSON
 }
 
-export interface IHANDLECHANGEPERMISSIONAction {
-    type: HANDLECHANGEPERMISSION,
+export interface IHANDLECHANGESTATUSAction {
+    type: HANDLECHANGESTATUS,
     event: any,
     payload: any,
     data: any
@@ -19,6 +19,7 @@ export interface IHANDLECHANGETEXTAction {
 
 export interface IHANDLESNACKBAROPENAction {
     type: HANDLESNACKBAROPEN,
+    payload: any
 }
 
 export interface IHANDLESNACKBARCLOSEAction {
@@ -40,10 +41,10 @@ export interface IHANDLECLOSEAction {
 export interface IHANDLESUBMITAction {
     type: HANDLESUBMIT,
     payload: any,
-    data: any
+    data: string
 }
 
-export type ModifyAction = IHANDLELOADAction | IHANDLECHANGEPERMISSIONAction | IHANDLECHANGETEXTAction | IHANDLESNACKBAROPENAction | IHANDLESNACKBARCLOSEAction | IHANDLECLICKAction 
+export type ModifyAction = IHANDLELOADAction | IHANDLECHANGESTATUSAction | IHANDLECHANGETEXTAction | IHANDLESNACKBAROPENAction | IHANDLESNACKBARCLOSEAction | IHANDLECLICKAction 
 | IHANDLECLOSEAction | IHANDLESUBMITAction ;
 
 export const handleLoad = (payload:JSON): IHANDLELOADAction => ({
@@ -51,8 +52,8 @@ export const handleLoad = (payload:JSON): IHANDLELOADAction => ({
     payload,
 })
 
-export const handleChangePermission = (payload: string, data: any): IHANDLECHANGEPERMISSIONAction => ({
-    type: HANDLECHANGEPERMISSION,
+export const handleChangeStatus = (payload: string, data: any): IHANDLECHANGESTATUSAction => ({
+    type: HANDLECHANGESTATUS,
     event,
     payload,
     data
@@ -63,8 +64,9 @@ export const handleChangeText = (): IHANDLECHANGETEXTAction => ({
     payload: event
 })
 
-export const handleSnackBarOpen = (): IHANDLESNACKBAROPENAction => ({
-    type: HANDLESNACKBAROPEN
+export const handleSnackBarOpen = (payload: any): IHANDLESNACKBAROPENAction => ({
+    type: HANDLESNACKBAROPEN,
+    payload
 })
 
 export const handleSnackBarClose = (): IHANDLESNACKBARCLOSEAction => ({
@@ -83,7 +85,7 @@ export const handleClose = (payload: string, data: string): IHANDLECLOSEAction =
     data
 })
 
-export const handleSubmit = (payload: string, data: any): IHANDLESUBMITAction => ({
+export const handleSubmit = (payload: string, data: string): IHANDLESUBMITAction => ({
     type: HANDLESUBMIT,
     payload,
     data

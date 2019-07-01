@@ -3,8 +3,8 @@ export const HANDLELOAD = "HANDLELOAD"
 export type HANDLELOAD = typeof HANDLELOAD;
 
 // handleChange - handleChange of switch
-export const HANDLECHANGEPERMISSION = "HANDLECHANGEPERMISSION";
-export type HANDLECHANGEPERMISSION = typeof HANDLECHANGEPERMISSION;
+export const HANDLECHANGESTATUS = "HANDLECHANGESTATUS";
+export type HANDLECHANGESTATUS = typeof HANDLECHANGESTATUS;
 
 // handleChangeText - handleChangeText of textfield
 export const HANDLECHANGETEXT = "HANDLECHANGETEXT";

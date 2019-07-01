@@ -1,7 +1,6 @@
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, FormControlLabel, Grid, Switch, TextField } from '@material-ui/core';
 import Message_Dialog from '../../subComponents/Dialog/MessageDialog'
 import NavBar from '../../subComponents/NavBar'
-// import LoginRegisterCard from './LoginRegisterCard'
 import * as React from 'react';
 
 // create infterface
@@ -56,7 +55,6 @@ const Styles = {
 // PureComponent with compontent control
 class Home extends React.PureComponent<IProps> {
     public render() {
-        console.log(this.props)
         const { Confirmpassword, Dialog, Dialogtitle, Dialogtext, Email, Login, Password, Username, onHandleChange, onHandleChangeText, onClear, onHandleClickOpen, onHandleClose } = this.props;
         return (
             <div style={{backgroundImage: "url(images/icon/pso2_wallpaper2.jpg)", backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>

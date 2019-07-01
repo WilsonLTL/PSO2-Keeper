@@ -77,7 +77,7 @@ export default function ResponsiveDialog(props) {
           <Button name="create-dialog-cancel" variant={"outlined"} onClick={() => props.close("Create-group")}>
             Cancel
           </Button>
-          <Button style={Styles.button} variant="contained" color="primary" autoFocus={true} onClick={props.submit}>
+          <Button style={Styles.button} variant="contained" color="primary" autoFocus={true} onClick={() => props.submit("Create-group")}>
             Confirm
           </Button>
         </DialogActions>

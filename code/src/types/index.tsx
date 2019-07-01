@@ -23,6 +23,20 @@ export interface IUserPanelState {
     EditDialog: any,
     CreateDialog: any,
     JoinDialog: any,
-    GroupInfoDialog: any,
+    GroupDialog: any,
+    SelectMissionDialog: any,
+  }
+}
+
+export interface IFormGroupPanelState {
+  FormGroupPanel: {
+    User: any,
+    Mission: any,
+    GroupFormList: any,
+    ColorList: any,
+    Groups: any,
+    SnackBar: any,
+    JoinMission: any,
+    MessageDialog: any,
   }
 }

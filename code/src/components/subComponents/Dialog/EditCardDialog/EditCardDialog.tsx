@@ -23,14 +23,14 @@ export default function ResponsiveDialog(props) {
 
   const CardStyles = {
     memberCard: {
-        height: "300px",
-        minHeight: "100px",
-        maxWidth: "600px",
-        minWidth: "50px",
-        borderRadius: "30px",
-        boxShadow: "3px 3px grey",
-        background: "linear-gradient(#90A1EF, #E4A2F5)",
-        margin: "0 auto"
+      height: "300px",
+      minHeight: "100px",
+      maxWidth: "600px",
+      minWidth: "50px",
+      borderRadius: "30px",
+      boxShadow: "4px 4px #EFEFEF",
+      background: "linear-gradient(#90A1EF, #E4A2F5)",
+      margin: "0 auto"
     },
     creditCardIcon: {
         height: 70,
@@ -139,7 +139,7 @@ export default function ResponsiveDialog(props) {
           <Button name="edit-cancel" variant={"outlined"} autoFocus={true} onClick={() => props.close("Edit-profile")}>
             Cancel
             </Button>
-          <Button name="edit-submit" style={Styles.button} variant="contained" color="primary" autoFocus={true} onClick={props.submit}>
+          <Button name="edit-submit" style={Styles.button} variant="contained" color="primary" autoFocus={true} onClick={() => props.submit("Edit-profile")}>
             Confirm
             </Button>
         </DialogActions>

@@ -7,6 +7,42 @@ export default function ResponsiveDialog(props) {
 
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
+            avatar: {
+                width: "200px",
+                height: "200px",
+                margin: "0px auto"
+            },
+            add_button: {
+                margin: "10px 0px -10px 10px",
+                backgroundColor: '#3C5A99'
+            },
+            cardMedia: {
+                height: "300px",
+            },
+            gridListTileBar: {
+                height: "300px",
+                margin: "0",
+                top: "0"
+            },
+            missionCardTitleBar: {
+                borderRadius: "30px",
+                height: "220px",
+                margin: "0",
+                top: "0"
+            },
+            groupCardListIcon: {
+                width: "80px",
+                height: "80px",
+                margin: "0 auto"
+            },
+            start_button: {
+                float: "right" as "right",
+                margin: "0px 30px 0px 0px"
+            },
+            edit_button: {
+                float: "left" as "left",
+                margin: "0px 0px 0px 30px"
+            },
             listStyle: {
                 width: '100%',
                 maxWidth: 360,
@@ -19,43 +55,10 @@ export default function ResponsiveDialog(props) {
 
     const classes = useStyles();
 
-    const Styles = {
-        avatar: {
-            width: "200px",
-            height: "200px",
-            margin: "0px auto"
-        },
-        add_button: {
-            margin: "10px 0px -10px 10px",
-            backgroundColor: '#3C5A99'
-        },
-        cardMedia: {
-            height: "300px",
-        },
-        gridListTileBar: {
-            height: "300px",
-            margin: "0",
-            top: "0"
-        },
-        missionCardTitleBar: {
-            borderRadius: "30px",
-            height: "220px",
-            margin: "0",
-            top: "0"
-        },
-        groupCardListIcon: {
-            width: "80px",
-            height: "80px",
-            margin: "0 auto"
-        },
-        start_button: {
-            float: "right" as "right",
-            margin: "0px 30px 0px 0px"
-        },
-        edit_button: {
-            float: "left" as "left",
-            margin: "0px 0px 0px 30px"
-        }
+    const permissionUpdate = (event, item) => {
+        item.permission === "Administrator" ? item.permission = "User" : item.permission = "Administrator"
+        item.status = event.target.checked;
+        props.handleChangePermission("Switch-permission")
     }
 
     return (
@@ -71,17 +74,22 @@ export default function ResponsiveDialog(props) {
             <Card>
                 <div>
                     <CardMedia
-                        style={Styles.cardMedia}
+                        className={classes.cardMedia}
                         image={props.groupInfo.img}
                         title="Contemplative Reptile"
                     />
                     <GridListTileBar title={
-                        <Avatar style={Styles.avatar} alt="Remy Sharp" src={props.groupInfo.avatar} />
+                        <div>
+                            <Avatar className={classes.avatar} alt="Remy Sharp" src={props.groupInfo.avatar} />
+                            <Typography component="div" variant="body2" style={{ textAlign: "center" as "center" }}>Group Name: {props.groupInfo.groupName}</Typography>
+                            <Typography component="div" variant="body2" style={{ textAlign: "center" as "center" }}>Permission: {props.groupInfo.permission}</Typography>
+                            <Typography component="div" variant="body2" style={{ textAlign: "center" as "center" }}>Access Token: {props.groupInfo.access_token}</Typography>
+                        </div>
                     }
-                        style={Styles.gridListTileBar}
+                    className={classes.gridListTileBar}
                     />
                 </div>
-                <CardContent>
+                <CardContent style={{backgroundColor: "#EFEFEF"}}>
                     <Grid container={true} spacing={3}>
                         <Grid item={true} xs={12} sm={4}>
                             <Card>
@@ -90,28 +98,25 @@ export default function ResponsiveDialog(props) {
                                     titleTypographyProps={{ variant: 'h5' }}
                                     title="Template Mission" />
                                 <Divider />
-                                <Fab id="create-group" color="secondary" size={"small"} aria-label="Edit" style={Styles.add_button} onClick={props.click}>
-                                    <Icon id="create-group">add</Icon>
-                                </Fab>
                                 <CardContent>
                                     <List className={classes.listStyle}>
                                         {props.groupInfo.mission.template_mission.map(item => (
                                             <div>
                                                 <ListItem key={item.missionName}>
                                                     <GridListTile>
-                                                        <img style={{ borderRadius: "30px", maxHeight: "220px" }} src={item.backImage} alt={item.missionName} />
+                                                        <img style={{ borderRadius: "30px", maxHeight: "220px", maxWidth: "310px" }} src={item.backImage} alt={item.missionName} />
                                                         <GridListTileBar title={
                                                             <div>
-                                                                <Avatar style={Styles.groupCardListIcon} alt="Remy Sharp" src={item.avatar} />
+                                                                <Avatar className={classes.groupCardListIcon} alt="Remy Sharp" src={item.avatar} />
                                                                 <Typography component="div" variant="body2" style={{ textAlign: "center" as "center" }}>Mission Name: {item.missionName}</Typography>
                                                                 <Typography component="div" variant="body2" style={{ textAlign: "center" as "center" }}>Quota: {item.quota}</Typography>
                                                                 <div>
-                                                                    <Button name={item.missionName} style={Styles.edit_button} variant="contained" color="default">Edit</Button>
-                                                                    <Button name={item.missionName} style={Styles.start_button} variant="contained" color="primary">Start</Button>
+                                                                    <Button name={item.missionName} className={classes.edit_button} disabled={props.groupInfo.permission === "Administrator" ? false:true} variant="contained" color="default" onClick={() => props.click("Select-mission",{type: "edit", mission: item})}>Edit</Button>
+                                                                    <Button name={item.missionName} className={classes.start_button} disabled={props.groupInfo.permission === "Administrator" ? false:true} variant="contained" color="primary" onClick={() => props.submit("Group-form")}>Start</Button>
                                                                 </div>
                                                             </div>
                                                         }
-                                                            style={Styles.missionCardTitleBar}
+                                                        className={classes.missionCardTitleBar}
                                                         />
                                                     </GridListTile>
                                                 </ListItem>
@@ -129,7 +134,7 @@ export default function ResponsiveDialog(props) {
                                     titleTypographyProps={{ variant: 'h5' }}
                                     title="Custom Mission" />
                                 <Divider />
-                                <Fab id="create-group" color="secondary" size={"small"} aria-label="Edit" style={Styles.add_button} onClick={props.click}>
+                                <Fab id="create-group" color="secondary" size={"small"} aria-label="Edit" className={classes.add_button} disabled={props.groupInfo.permission === "Administrator" ? false:true} onClick={() => props.click("Select-mission",{type: "create"})}>
                                     <Icon id="create-group">add</Icon>
                                 </Fab>
                                 <CardContent>
@@ -141,16 +146,16 @@ export default function ResponsiveDialog(props) {
                                                         <img style={{ borderRadius: "30px", maxHeight: "220px" }} src={item.backImage} alt={item.missionName} />
                                                         <GridListTileBar title={
                                                             <div>
-                                                                <Avatar style={Styles.groupCardListIcon} alt="Remy Sharp" src={item.avatar} />
+                                                                <Avatar className={classes.groupCardListIcon} alt="Remy Sharp" src={item.avatar} />
                                                                 <Typography component="div" variant="body2" style={{ textAlign: "center" as "center" }}>Mission Name: {item.missionName}</Typography>
                                                                 <Typography component="div" variant="body2" style={{ textAlign: "center" as "center" }}>Quota: {item.quota}</Typography>
                                                                 <div>
-                                                                    <Button name={item.missionName} style={Styles.edit_button} variant="contained" color="default">Edit</Button>
-                                                                    <Button name={item.missionName} style={Styles.start_button} variant="contained" color="primary">Start</Button>
+                                                                    <Button name={item.missionName} className={classes.edit_button} disabled={props.groupInfo.permission === "Administrator" ? false:true} variant="contained" color="default">Edit</Button>
+                                                                    <Button name={item.missionName} className={classes.start_button} disabled={props.groupInfo.permission === "Administrator" ? false:true} variant="contained" color="primary">Start</Button>
                                                                 </div>
                                                             </div>
                                                         }
-                                                            style={Styles.missionCardTitleBar}
+                                                        className={classes.missionCardTitleBar}
                                                         />
                                                     </GridListTile>
                                                 </ListItem>
@@ -182,9 +187,11 @@ export default function ResponsiveDialog(props) {
                                                     />
                                                     <ListItemSecondaryAction>
                                                         <Switch
-                                                            checked={item.permission === "Administrator" ? true : false}
-                                                            value="checkedB"
+                                                            checked={item.status}
+                                                            value={item.status}
                                                             color="primary"
+                                                            disabled={props.groupInfo.permission === "Administrator" ? false:true}
+                                                            onChange={(event) => {permissionUpdate(event,item)}}
                                                         />
                                                     </ListItemSecondaryAction>
                                                 </ListItem>

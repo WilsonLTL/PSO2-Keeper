@@ -92,6 +92,9 @@ export default (state= defaultValue, action: ModifyAction): any => {
         Dialogtext: state.Dialogtext
       }
     case HANDLECLICKOPEN:
+      if (!state.Login) {
+        window.location.href = "/userPanel/access_token/userID";
+      }else {
         return {
           value: state.value,
           Email: state.Email,
@@ -103,6 +106,7 @@ export default (state= defaultValue, action: ModifyAction): any => {
           Dialogtitle: state.Dialogtitle,
           Dialogtext: state.Dialogtext
         }
+      }
     case HANDLECLOSE:
         return {
           value: state.value,

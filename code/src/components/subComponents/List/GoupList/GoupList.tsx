@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Avatar, Badge, Card, Divider, List, ListItem, ListItemAvatar, ListItemText, Typography, Icon } from '@material-ui/core'
+import { Avatar, Badge, Card, Divider, List, ListItem, ListItemAvatar, ListItemText, Typography, Icon, makeStyles, Theme, createStyles } from '@material-ui/core'
 
 export default function ResponsiveGroupList(props) {
-    const Styles = {
+
+    const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
         root: {
         },
         background: {
@@ -11,9 +13,10 @@ export default function ResponsiveGroupList(props) {
         inline: {
             display: 'grid',
         }
-    }
+    }),
+  );
 
-    console.log(props)
+  const classes = useStyles();
 
     const tileData = props.tileData
 
@@ -22,9 +25,9 @@ export default function ResponsiveGroupList(props) {
     const join = props.join
 
     return (
-        <div style={Styles.background}>
+        <div className={classes.background}>
             <Card>
-                <List style={Styles.root}>
+                <List className={classes.root}>
 
                     {tileData.map(tile => (
                         <div key={tile.groupName}>
@@ -43,10 +46,10 @@ export default function ResponsiveGroupList(props) {
                                 <ListItemText
                                     secondary={
                                         <React.Fragment>
-                                            <Typography component="span" variant="overline" style={Styles.inline} color="textSecondary" >
+                                            <Typography component="span" variant="overline" className={classes.inline} color="textSecondary" >
                                                 {"Group Name"}
                                             </Typography>
-                                            <Typography component="span" variant="body2" style={Styles.inline} color="textPrimary" >
+                                            <Typography component="span" variant="body2" className={classes.inline} color="textPrimary" >
                                                 {tile.groupName}
                                             </Typography>
                                         </React.Fragment>
@@ -64,10 +67,10 @@ export default function ResponsiveGroupList(props) {
                             <ListItemText
                                 secondary={
                                     <React.Fragment>
-                                        <Typography component="span" variant="overline" style={Styles.inline} color="textSecondary" >
+                                        <Typography component="span" variant="overline" className={classes.inline} color="textSecondary" >
                                             {"Click to join new group"}
                                         </Typography>
-                                        <Typography component="span" variant="body2" style={Styles.inline} color="textPrimary" >
+                                        <Typography component="span" variant="body2" className={classes.inline} color="textPrimary" >
                                             {"Click to join new group"}
                                         </Typography>
                                     </React.Fragment>

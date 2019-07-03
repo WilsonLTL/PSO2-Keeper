@@ -1,43 +1,47 @@
 import * as React from 'react';
-import { Dialog, CardHeader, Avatar, CardContent, GridListTile, GridListTileBar, DialogContent, DialogContentText, TextField, DialogActions, Button } from '@material-ui/core';
+import { Dialog, CardHeader, Avatar, CardContent, GridListTile, GridListTileBar, DialogContent, DialogContentText, TextField, DialogActions, Button, makeStyles, Theme, createStyles } from '@material-ui/core';
 
 export default function ResponsiveDialog(props) {
 
     const mission = props.mission.mission
 
-    const Styles = {
-        title: {
-          color: '#3C5A99',
-          textAlign: "center" as "center"
-        },
-        bar: {
-          backgroundColor: '#3C5A99',
-          color: "white",
-          textAlign: "left" as "left",
-          maxHeight: "30px"
-        },
-        button: {
-          backgroundColor: '#3C5A99',
-        },
-        form: {
-          display: "grid"
-        },
-        creditAvatar: {
-          width: 120,
-          height: 120,
-          margin: "0px auto"
-        },
-        groupCardListIcon: {
-          width: "80px",
-          height: "80px",
-          margin: "0 auto"
-        },
-        gridListTileBar: {
-          borderRadius: "30px",
-          height: "100%",
-          margin: "0"
-        },
-    }
+    const useStyles = makeStyles((theme: Theme) =>
+        createStyles({
+            title: {
+                color: '#3C5A99',
+                textAlign: "center" as "center"
+              },
+              bar: {
+                backgroundColor: '#3C5A99',
+                color: "white",
+                textAlign: "left" as "left",
+                maxHeight: "30px"
+              },
+              button: {
+                backgroundColor: '#3C5A99',
+              },
+              form: {
+                display: "grid"
+              },
+              creditAvatar: {
+                width: 120,
+                height: 120,
+                margin: "0px auto"
+              },
+              groupCardListIcon: {
+                width: "80px",
+                height: "80px",
+                margin: "0 auto"
+              },
+              gridListTileBar: {
+                borderRadius: "30px",
+                height: "100%",
+                margin: "0"
+              },
+        }),
+    );
+
+    const classes = useStyles();
 
     return (
         <Dialog
@@ -48,7 +52,7 @@ export default function ResponsiveDialog(props) {
             disableBackdropClick={true}
             aria-labelledby="responsive-dialog-title"
         >
-            <CardHeader style={Styles.bar} avatar={
+            <CardHeader className={classes.bar} avatar={
                 <Avatar alt="Remy Sharp" src="/images/icon/arks_logo.png" />}
                 titleTypographyProps={{ variant: 'h5' }}
                 title={props.title} />
@@ -56,14 +60,14 @@ export default function ResponsiveDialog(props) {
                 <GridListTile>
                     <img style={{ borderRadius: "30px", maxHeight: "220px" }} src={mission.backImage} />
                     <GridListTileBar title={
-                        <Avatar style={Styles.groupCardListIcon} alt="Remy Sharp" src={mission.avatar} />
+                        <Avatar className={classes.groupCardListIcon} alt="Remy Sharp" src={mission.avatar} />
                     }
-                        style={Styles.gridListTileBar}
+                    className={classes.gridListTileBar}
                     />
                 </GridListTile>
                 <DialogContent >
                     <DialogContentText>
-                        <form style={Styles.form} noValidate={true} autoComplete="on">
+                        <form className={classes.form} noValidate={true} autoComplete="on">
                             <TextField id="dialog-avatar" name="select-mission-avatar" label="Avatar" value={mission.avatar} margin="normal" variant="outlined" onChange={props.handleChange} />
                             <TextField id="dialog-backImage" name="select-mission-backImage" label="Background Image" value={mission.backImage} margin="normal" variant="outlined" onChange={props.handleChange} />
                             <TextField id="dialog-name" name="select-mission-missionName" label="Mission Name" value={mission.missionName} margin="normal" variant="outlined" onChange={props.handleChange} />
@@ -78,7 +82,7 @@ export default function ResponsiveDialog(props) {
                 <Button name="create-dialog-cancel" variant={"outlined"} onClick={() => props.close("Select-message")}>
                     Cancel
                 </Button>
-                <Button style={Styles.button} variant="contained" color="primary" autoFocus={true} onClick={() => props.submit("Select-message",props.type)}>
+                <Button className={classes.button} variant="contained" color="primary" autoFocus={true} onClick={() => props.submit("Select-message",props.type)}>
                     Confirm
                 </Button>
             </DialogActions>

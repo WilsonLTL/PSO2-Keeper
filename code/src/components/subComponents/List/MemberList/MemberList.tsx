@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { Card, Avatar, Divider, CardContent, List, ListItem, Chip, makeStyles, Theme, createStyles, Checkbox, Button, Menu, MenuItem, Icon } from '@material-ui/core';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
-import clsx from 'clsx';
 
 export default function ResponsiveMemberList(props) {
     const useStyles = makeStyles((theme: Theme) =>
@@ -17,7 +16,6 @@ export default function ResponsiveMemberList(props) {
                 background: "#3C5A99",
                 margin: theme.spacing(1),
             },
-            icon: {}
         }),
     );
     const classes = useStyles();
@@ -35,7 +33,7 @@ export default function ResponsiveMemberList(props) {
                         {popupState => (
                             <React.Fragment>
                                 <Button className={classes.button} color="primary" variant="contained" {...bindTrigger(popupState)}>
-                                    <Icon className={clsx(classes.icon,'fas fa-palettefas fa-palette')}/>Assign Team
+                                    <Icon className={'fas fa-palettefas fa-palette'}/>Assign Team
                                  </Button>
                                 <Menu {...bindMenu(popupState)}>
                                     {props.colorList.map(item => (
@@ -51,7 +49,7 @@ export default function ResponsiveMemberList(props) {
                         )}
                     </PopupState >
                     <Button className={classes.button} color="primary" variant="contained" onClick={() => props.submit("assign-leader")}>
-                        <Icon className={clsx(classes.icon, 'fas fa-star')} />Assign Leader
+                        <Icon className={'fas fa-star'} />Assign Leader
                     </Button>
                     <List className={classes.listStyle}>
                         {props.memberList.map(item => (
@@ -76,10 +74,10 @@ export default function ResponsiveMemberList(props) {
                                         <Icon>label</Icon>Leader
                                     </Button> }
                                     {item.class === "TE" &&  <Button variant="contained" style={{background: item.color, borderRadius: "30px"}} color="primary" className={classes.button}>
-                                        <Icon className={clsx(classes.icon,'fas fa-cross')}/>TE
+                                        <Icon className={'fas fa-cross'}/>TE
                                     </Button> }
                                     {item.class === "RA" && <Button variant="contained" style={{background: item.color, borderRadius: "30px"}} color="primary" className={classes.button}>
-                                        <Icon className={clsx(classes.icon,'fas fa-crosshairs')}/>RA
+                                        <Icon className={'fas fa-crosshairs'}/>RA
                                     </Button>}
                                 </ListItem>
                                 <Divider />

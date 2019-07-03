@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, CardMedia, Typography, Button, Icon} from '@material-ui/core';
-import clsx from 'clsx';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -33,7 +32,6 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingLeft: theme.spacing(1),
             paddingBottom: theme.spacing(1),
         },
-        icon: {}
     }),
 );
 
@@ -69,19 +67,19 @@ export default function ResponsiveGroupConrol(props) {
                                 <Icon>label</Icon>Leader
                             </Button>
                             <Button variant="contained" color="primary" className={classes.button}>
-                                <Icon className={clsx(classes.icon,'fas fa-cross')}/>TE
+                                <Icon className={'fas fa-cross'}/>TE
                             </Button>
                             <Button variant="contained" color="primary" className={classes.button}>
-                                <Icon className={clsx(classes.icon,'fas fa-crosshairs')}/>RA
+                                <Icon className={'fas fa-crosshairs'}/>RA
                             </Button>
                             <Button variant="contained" color="primary" className={classes.button} onClick={() => props.click("Push-message")}>
-                                <Icon className={clsx(classes.icon,'fas fa-envelope')}/>Push Message
+                                <Icon className={'fas fa-envelope'}/>Push Message
                             </Button>
                             <Button variant="contained" color="primary" className={classes.button} onClick={() => props.click("Join-mission")}>
-                                <Icon className={clsx(classes.icon,'fas fa-sticky-note')}/>Join Form
+                                <Icon className={'fas fa-sticky-note'}/>Join Form
                             </Button>
                             <Button variant="contained" color="primary" className={classes.button}>
-                                <Icon className={clsx(classes.icon,'fas fa-check')} onClick={() => props.click("Finish")}/>Finish
+                                <Icon className={'fas fa-check'} onClick={() => props.click("Finish")}/>Finish
                             </Button>
                         </div>
                     </CardContent>
